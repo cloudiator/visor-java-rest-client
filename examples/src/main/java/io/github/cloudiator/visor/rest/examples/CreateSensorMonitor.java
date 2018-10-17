@@ -4,7 +4,6 @@ import io.github.cloudiator.visor.rest.ApiClient;
 import io.github.cloudiator.visor.rest.ApiException;
 import io.github.cloudiator.visor.rest.api.DefaultApi;
 import io.github.cloudiator.visor.rest.model.DataSink;
-import io.github.cloudiator.visor.rest.model.DataSinkConfiguration;
 import io.github.cloudiator.visor.rest.model.Interval;
 import io.github.cloudiator.visor.rest.model.Interval.TimeUnitEnum;
 import io.github.cloudiator.visor.rest.model.Monitor.TypeEnum;
