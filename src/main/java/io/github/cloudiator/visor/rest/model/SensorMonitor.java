@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.github.cloudiator.visor.rest.model.DataSink;
 import io.github.cloudiator.visor.rest.model.Interval;
 import io.github.cloudiator.visor.rest.model.Monitor;
 import io.swagger.annotations.ApiModel;

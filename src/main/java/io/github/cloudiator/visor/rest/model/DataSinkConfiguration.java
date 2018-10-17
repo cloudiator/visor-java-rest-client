@@ -19,43 +19,48 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.github.cloudiator.visor.rest.model.DataSink;
-import io.github.cloudiator.visor.rest.model.Monitor;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.io.Serializable;
 
 /**
- * A monitoring providing a telnet endpoint where applications can advertise metrics.
+ * DataSinkConfiguration
  */
-@ApiModel(description = "A monitoring providing a telnet endpoint where applications can advertise metrics.")
 
-public class PushMonitor extends Monitor implements Serializable {
+public class DataSinkConfiguration implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  @SerializedName("port")
-  private BigDecimal port = null;
+  @SerializedName("values")
+  private Map<String, String> values = null;
 
-  public PushMonitor port(BigDecimal port) {
-    this.port = port;
+  public DataSinkConfiguration values(Map<String, String> values) {
+    this.values = values;
+    return this;
+  }
+
+  public DataSinkConfiguration putValuesItem(String key, String valuesItem) {
+    if (this.values == null) {
+      this.values = new HashMap<String, String>();
+    }
+    this.values.put(key, valuesItem);
     return this;
   }
 
    /**
-   * Get port
-   * @return port
+   * Get values
+   * @return values
   **/
   @ApiModelProperty(value = "")
-  public BigDecimal getPort() {
-    return port;
+  public Map<String, String> getValues() {
+    return values;
   }
 
-  public void setPort(BigDecimal port) {
-    this.port = port;
+  public void setValues(Map<String, String> values) {
+    this.values = values;
   }
 
 
@@ -67,23 +72,22 @@ public class PushMonitor extends Monitor implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PushMonitor pushMonitor = (PushMonitor) o;
-    return Objects.equals(this.port, pushMonitor.port) &&
-        super.equals(o);
+    DataSinkConfiguration dataSinkConfiguration = (DataSinkConfiguration) o;
+    return Objects.equals(this.values, dataSinkConfiguration.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(port, super.hashCode());
+    return Objects.hash(values);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PushMonitor {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    port: ").append(toIndentedString(port)).append("\n");
+    sb.append("class DataSinkConfiguration {\n");
+    
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }

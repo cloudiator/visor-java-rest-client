@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 
 DefaultApi apiInstance = new DefaultApi();
-String uuid = "uuid_example"; // String | A globally unique identifier of a resource
+String uuid = "uuid_example"; // String | A globally unique identifier of a monitor.
 try {
     apiInstance.deleteMonitor(uuid);
 } catch (ApiException e) {
@@ -39,7 +39,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uuid** | **String**| A globally unique identifier of a resource |
+ **uuid** | **String**| A globally unique identifier of a monitor. |
 
 ### Return type
 
@@ -106,7 +106,7 @@ No authorization required
 
 
 DefaultApi apiInstance = new DefaultApi();
-String uuid = "uuid_example"; // String | A globally unique identifier of a resource
+String uuid = "uuid_example"; // String | A globally unique identifier of a monitor.
 try {
     Monitor result = apiInstance.getMonitor(uuid);
     System.out.println(result);
@@ -120,7 +120,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uuid** | **String**| A globally unique identifier of a resource |
+ **uuid** | **String**| A globally unique identifier of a monitor. |
 
 ### Return type
 
@@ -231,7 +231,7 @@ No authorization required
 
 
 DefaultApi apiInstance = new DefaultApi();
-String uuid = "uuid_example"; // String | A globally unique identifier of a resource
+String uuid = "uuid_example"; // String | A globally unique identifier of a monitor.
 try {
     Monitor result = apiInstance.putMonitor(uuid);
     System.out.println(result);
@@ -245,7 +245,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uuid** | **String**| A globally unique identifier of a resource |
+ **uuid** | **String**| A globally unique identifier of a monitor. |
 
 ### Return type
 

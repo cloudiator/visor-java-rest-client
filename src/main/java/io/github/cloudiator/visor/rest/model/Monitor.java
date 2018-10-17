@@ -19,9 +19,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.github.cloudiator.visor.rest.model.DataSink;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -94,6 +96,9 @@ public class Monitor implements Serializable {
   @SerializedName("monitorContext")
   private Map<String, String> monitorContext = null;
 
+  @SerializedName("dataSinks")
+  private List<DataSink> dataSinks = null;
+
   public Monitor type(TypeEnum type) {
     this.type = type;
     return this;
@@ -118,10 +123,10 @@ public class Monitor implements Serializable {
   }
 
    /**
-   * Get metricName
+   * Unique name identifying the metric
    * @return metricName
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Unique name identifying the metric")
   public String getMetricName() {
     return metricName;
   }
@@ -136,10 +141,10 @@ public class Monitor implements Serializable {
   }
 
    /**
-   * Get componentId
+   * ID of the component monitored by this sensor.
    * @return componentId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "ID of the component monitored by this sensor.")
   public String getComponentId() {
     return componentId;
   }
@@ -162,16 +167,42 @@ public class Monitor implements Serializable {
   }
 
    /**
-   * Get monitorContext
+   * Context of the monitor. Multiple key - value pairs depicting the environment of the monitor.
    * @return monitorContext
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Context of the monitor. Multiple key - value pairs depicting the environment of the monitor.")
   public Map<String, String> getMonitorContext() {
     return monitorContext;
   }
 
   public void setMonitorContext(Map<String, String> monitorContext) {
     this.monitorContext = monitorContext;
+  }
+
+  public Monitor dataSinks(List<DataSink> dataSinks) {
+    this.dataSinks = dataSinks;
+    return this;
+  }
+
+  public Monitor addDataSinksItem(DataSink dataSinksItem) {
+    if (this.dataSinks == null) {
+      this.dataSinks = new ArrayList<DataSink>();
+    }
+    this.dataSinks.add(dataSinksItem);
+    return this;
+  }
+
+   /**
+   * Get dataSinks
+   * @return dataSinks
+  **/
+  @ApiModelProperty(value = "")
+  public List<DataSink> getDataSinks() {
+    return dataSinks;
+  }
+
+  public void setDataSinks(List<DataSink> dataSinks) {
+    this.dataSinks = dataSinks;
   }
 
 
@@ -187,12 +218,13 @@ public class Monitor implements Serializable {
     return Objects.equals(this.type, monitor.type) &&
         Objects.equals(this.metricName, monitor.metricName) &&
         Objects.equals(this.componentId, monitor.componentId) &&
-        Objects.equals(this.monitorContext, monitor.monitorContext);
+        Objects.equals(this.monitorContext, monitor.monitorContext) &&
+        Objects.equals(this.dataSinks, monitor.dataSinks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, metricName, componentId, monitorContext);
+    return Objects.hash(type, metricName, componentId, monitorContext, dataSinks);
   }
 
 
@@ -205,6 +237,7 @@ public class Monitor implements Serializable {
     sb.append("    metricName: ").append(toIndentedString(metricName)).append("\n");
     sb.append("    componentId: ").append(toIndentedString(componentId)).append("\n");
     sb.append("    monitorContext: ").append(toIndentedString(monitorContext)).append("\n");
+    sb.append("    dataSinks: ").append(toIndentedString(dataSinks)).append("\n");
     sb.append("}");
     return sb.toString();
   }
