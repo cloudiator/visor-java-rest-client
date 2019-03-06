@@ -99,9 +99,6 @@ public class Monitor implements Serializable {
   @SerializedName("dataSinks")
   private List<DataSink> dataSinks = null;
 
-  @SerializedName("uuid")
-  private String uuid = null;
-
   public Monitor type(TypeEnum type) {
     this.type = type;
     return this;
@@ -208,24 +205,6 @@ public class Monitor implements Serializable {
     this.dataSinks = dataSinks;
   }
 
-  public Monitor uuid(String uuid) {
-    this.uuid = uuid;
-    return this;
-  }
-
-   /**
-   * UUID set by Visor
-   * @return uuid
-  **/
-  @ApiModelProperty(value = "UUID set by Visor")
-  public String getUuid() {
-    return uuid;
-  }
-
-  public void setUuid(String uuid) {
-    this.uuid = uuid;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -240,13 +219,12 @@ public class Monitor implements Serializable {
         Objects.equals(this.metricName, monitor.metricName) &&
         Objects.equals(this.componentId, monitor.componentId) &&
         Objects.equals(this.monitorContext, monitor.monitorContext) &&
-        Objects.equals(this.dataSinks, monitor.dataSinks) &&
-        Objects.equals(this.uuid, monitor.uuid);
+        Objects.equals(this.dataSinks, monitor.dataSinks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, metricName, componentId, monitorContext, dataSinks, uuid);
+    return Objects.hash(type, metricName, componentId, monitorContext, dataSinks);
   }
 
 
@@ -260,7 +238,6 @@ public class Monitor implements Serializable {
     sb.append("    componentId: ").append(toIndentedString(componentId)).append("\n");
     sb.append("    monitorContext: ").append(toIndentedString(monitorContext)).append("\n");
     sb.append("    dataSinks: ").append(toIndentedString(dataSinks)).append("\n");
-    sb.append("    uuid: ").append(toIndentedString(uuid)).append("\n");
     sb.append("}");
     return sb.toString();
   }
