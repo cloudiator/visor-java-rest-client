@@ -23,4 +23,8 @@
 #!docs/README.md
 
 pom.xml
+
 .gitignore
+
+# ignore the travis file
+.travis.yml
